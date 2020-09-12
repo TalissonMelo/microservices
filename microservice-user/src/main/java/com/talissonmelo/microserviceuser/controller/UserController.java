@@ -4,6 +4,9 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +28,30 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private DiscoveryClient discoveryClient;
+	
+	@Autowired
+	private Environment environment;
+	
+	@Value("${spring.application.name}")
+	private String serviceId;
+	
+	@GetMapping(value = "/port")
+	public String getPort() {
+		return "Serviço na porta número: " + environment.getProperty("local.server.port");
+	}
+	
+	@GetMapping(value = "/instances")
+	public ResponseEntity<?> getInstance(){
+		return new ResponseEntity<>(discoveryClient.getInstances(serviceId), HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/services")
+	public ResponseEntity<?> getServices(){
+		return new ResponseEntity<>(discoveryClient.getServices(), HttpStatus.OK);
+	}
 	
 	@PostMapping(value = "/registration")
 	public ResponseEntity<?> save(@RequestBody User user){
