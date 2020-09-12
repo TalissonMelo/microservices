@@ -36,7 +36,7 @@ public class UserController {
 		return new ResponseEntity<>(userService.save(user), HttpStatus.CREATED);
 	}
 
-	@GetMapping(value = "/login")
+	@PostMapping(value = "/login")
 	public ResponseEntity<?> getUser(Principal principal){
 		if(principal == null || principal.getName() == null) {
 			return new ResponseEntity<>(HttpStatus.OK);
