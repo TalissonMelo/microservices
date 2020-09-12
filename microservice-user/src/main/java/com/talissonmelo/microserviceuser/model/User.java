@@ -1,9 +1,13 @@
 package com.talissonmelo.microserviceuser.model;
 
-import com.sun.javafx.geom.transform.Identity;
-import lombok.Data;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import javax.persistence.*;
+import lombok.Data;
 
 @Data
 @Entity

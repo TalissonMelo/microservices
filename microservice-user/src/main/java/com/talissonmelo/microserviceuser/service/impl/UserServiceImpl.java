@@ -1,14 +1,16 @@
 package com.talissonmelo.microserviceuser.service.impl;
 
-import com.talissonmelo.microserviceuser.model.User;
-import com.talissonmelo.microserviceuser.repository.UsersRepository;
-import com.talissonmelo.microserviceuser.service.UserService;
-import lombok.extern.slf4j.Slf4j;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import com.talissonmelo.microserviceuser.model.User;
+import com.talissonmelo.microserviceuser.repository.UsersRepository;
+import com.talissonmelo.microserviceuser.service.UserService;
+
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
