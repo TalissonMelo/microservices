@@ -71,7 +71,7 @@ public class UserController {
 		return ResponseEntity.ok(userService.findByUsername(principal.getName()));
 	}
 	
-	@GetMapping(value = "/names")
+	@PostMapping(value = "/names")
 	public ResponseEntity<?> getNames(@RequestBody List<Long> ids){
 		return ResponseEntity.ok(userService.findByIdList(ids));
 	}
