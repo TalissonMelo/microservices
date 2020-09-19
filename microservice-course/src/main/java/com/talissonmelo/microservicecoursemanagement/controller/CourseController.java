@@ -4,12 +4,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,11 +48,11 @@ public class CourseController {
 	public ResponseEntity<?> findTransactionsOfUser(@PathVariable Long userId) {
 		return ResponseEntity.ok(courseService.findTransactionsOfUser(userId));
 	}
-	
+
 	@GetMapping("/service/instances")
-    public ResponseEntity<?> getInstances() {
-        return ResponseEntity.ok(discoveryClient.getInstancesById(serviceId));
-    }
+	public ResponseEntity<?> getInstances() {
+		return ResponseEntity.ok(discoveryClient.getInstancesById(serviceId));
+	}
 
 	@GetMapping("/course/all")
 	public ResponseEntity<?> findAllCourses() {
